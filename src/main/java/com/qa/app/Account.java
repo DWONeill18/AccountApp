@@ -1,10 +1,18 @@
 package com.qa.app;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Account {
-	int id;
-	String firstName;
-	String lastName;
-	int accountNum;
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+private	int id;
+private	String firstName;
+private	String lastName;
+private	int accountNum;
 	
 	public Account () {
 		
@@ -41,6 +49,20 @@ public class Account {
 	public void setAccountNum(int accountNum) {
 		this.accountNum = accountNum;
 	}
+	
+//	public String updateFirstName(int id, String newFirstName) {
+//		return newfirstName;
+//		
+//	}
+//	
+//	public String deleteFirstName(int id, String newFirstName) {
+//		return firstName;
+//		
+//	}
+//		
+		
+	
+	
 	
 	
 
