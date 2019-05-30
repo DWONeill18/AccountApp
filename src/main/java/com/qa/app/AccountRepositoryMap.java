@@ -12,7 +12,7 @@ public class AccountRepositoryMap implements AccountRepository {
 		
 	}
 	
-	public Account retrieve(Integer id) {
+	public Account retrieve(int id) {
 		
 		return map.get(id);
 	}

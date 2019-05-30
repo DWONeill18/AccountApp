@@ -7,6 +7,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import com.qa.app.Account;
+import com.qa.app.AccountRepositoryDB;
 import com.qa.app.AccountRepositoryMap;
 
 
@@ -49,7 +50,67 @@ public class AccountTest {
 		assertEquals("Wrong Account Retrieved", a, retrieved);
 			
 		}
+	
+//	@Test
+//	public void accountRepositioryDBTest() {
+//		
+//		AccountRepositoryDBTest arm = new AccountRepositoryDB();	
+//		Account a = new Account();
+////		int id = 2;
+////		a.setId(id);
+//		a.setFirstName("Chris");
+//		arm.add(a);
+//		Account retrieved = arm.retrieve(id);
+//		
+//		assertEquals("Wrong Account Retrieved", "Chris", retrieved.getFirstName());
+//		assertEquals("Wrong Account Retrieved", a, retrieved);
+//			
+//		}
 		
+	@Test
+	public void DBTest() {
+		
+		Account a = new Account();
+		AccountRepositoryDB db = new AccountRepositoryDB();	
+
+		db.add(a);
+		int id = a.getId();
+		
+		Account accountBack = db.retrieve(id);
+		
+		assertEquals("Wrong Account Retrieved", a, accountBack);
+			
+		}
+		
+	@Test
+	public void DBUpdate() {
+		
+		Account account = new Account();
+		AccountRepositoryDB db = new AccountRepositoryDB();	
+		account.setFirstName("Adrian");;
+		db.add(account);
+		int id = account.getId();
+		db.updatefirstName(id,  "Danny");
+		String firstName = account.getFirstName();
+		assertEquals("wrong name uploaded", "Danny", firstName);
+		
+		
+	}
+	
+	@Test
+	public void removeDB() {
+		
+		Account account = new Account();
+		AccountRepositoryDB db = new AccountRepositoryDB();	
+		account.setFirstName("Adrian");
+		db.add(account);
+		int id = account.getId();
+		db.removeD(id);
+		String firstName = account.getFirstName();
+		assertEquals("removed account, "null", firstName);
+	}
+	
+	
 	}
 	
 	
